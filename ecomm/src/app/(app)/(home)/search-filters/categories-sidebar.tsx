@@ -1,7 +1,7 @@
 import { CustomCategory } from "../types";
 import { useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, Link } from "lucide-react";
 import { useRouter } from "next/navigation";
 import {
     Sheet,
@@ -94,7 +94,11 @@ export const CategoriesSideBar = ({
                             onClick={() => handleCategoryClick(category)}
                             className="w-full text-left p-4 hover:bg-black hover:text-white flex justify-between items-center text-base font-medium cursor-pointer"
                         >
-                             {category.name}
+                            <Link 
+                                href={`/${category.slug === "all" ? "": category.slug}`}
+                            >
+                                {category.name}
+                            </Link>
                              {category.subcategories && category.subcategories.length > 0 && (
                                 <ChevronRightIcon className="size-4"/>
                              )}
